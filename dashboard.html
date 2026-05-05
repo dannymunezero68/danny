@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="dashboardPanel">
+    <div class="navbar">
+        <div class="logo">
+            <img src="ly.svg" alt="Logo" class="logo-img-nav">
+            <h3>Class Attendance System</h3>
+        </div>
+        <div class="nav-links">
+            <span>Welcome, <span id="loggedUser"></span></span>
+            <button class="nav-btn" onclick="loadPage('dashboard')">Home</button>
+            <button class="nav-btn" onclick="loadPage('students')">Students</button>
+            <button class="nav-btn" onclick="loadPage('attendance')">Attendance</button>
+            <button class="nav-btn" onclick="loadPage('reports')">Reports</button>
+            <button class="nav-btn logout-btn" onclick="doLogout()">Logout</button>
+        </div>
+    </div>
+    
+    <div class="stats-grid">
+        <div class="stat-box">
+            <h3 id="totalStudents">0</h3>
+            <p>Total Students</p>
+        </div>
+        <div class="stat-box">
+            <h3 id="presentToday">0</h3>
+            <p>Present Today</p>
+        </div>
+        <div class="stat-box">
+            <h3 id="absentToday">0</h3>
+            <p>Absent Today</p>
+        </div>
+        <div class="stat-box">
+            <h3 id="lateToday">0</h3>
+            <p>Late Today</p>
+        </div>
+        <div class="stat-box">
+            <h3 id="attendanceRate">0%</h3>
+            <p>Overall Rate</p>
+        </div>
+    </div>
+    
+    <div class="quick-actions">
+        <button class="primary-btn" onclick="loadPage('students')">Add New Student</button>
+        <button class="primary-btn" onclick="loadPage('attendance')">Mark Today's Attendance</button>
+        <button class="primary-btn" onclick="loadPage('reports')">Generate Report</button>
+    </div>
+</div>
+
+<script src="storage.js"></script>
+<script src="navigation.js"></script>
+<script src="students.js"></script>
+<script src="attendance.js"></script>
+<script src="reports.js"></script>
+<script src="dashboard.js"></script>
+<script>
+    if (typeof initStandalone === 'function') initStandalone();
+</script>
+</body>
+</html>

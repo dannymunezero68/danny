@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="reportsPanel">
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.svg" alt="Logo" class="logo-img-nav">
+            <h3>Class Attendance System</h3>
+        </div>
+        <div class="nav-links">
+            <span>Welcome, <span id="loggedUser4"></span></span>
+            <button class="nav-btn" onclick="loadPage('dashboard')">Dashboard</button>
+            <button class="nav-btn" onclick="loadPage('students')">Students</button>
+            <button class="nav-btn" onclick="loadPage('attendance')">Attendance</button>
+            <button class="nav-btn" onclick="loadPage('reports')">Reports</button>
+            <button class="nav-btn logout-btn" onclick="doLogout()">Logout</button>
+        </div>
+    </div>
+    
+    <div class="form-box">
+        <h3>Attendance Reports</h3>
+        <div class="filter-group">
+            <label>Filter by Date:</label>
+            <input type="date" id="reportDate">
+            <button onclick="filterByDate()" class="primary-btn">Filter</button>
+            <button onclick="showAllReports()" class="secondary-btn">Show All</button>
+        </div>
+        <div class="filter-group">
+            <label>Filter by Student:</label>
+            <input type="text" id="searchReport" placeholder="Search student name" onkeyup="searchInReports()">
+        </div>
+        <div id="reportsTable"></div>
+    </div>
+</div>
+
+<script src="storage.js"></script>
+<script src="navigation.js"></script>
+<script src="students.js"></script>
+<script src="attendance.js"></script>
+<script src="reports.js"></script>
+<script src="dashboard.js"></script>
+<script>
+    if (typeof initStandalone === 'function') initStandalone();
+</script>
+</body>
+</html>

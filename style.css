@@ -1,0 +1,296 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* HEADER */
+.header {
+    background: white;
+    padding: 30px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+
+.logo-img {
+     height: 50px;
+ }
+
+.header h1 {
+    color: #4a5568;
+    font-size: 28px;
+    text-align: center;
+}
+
+.header p {
+    color: #718096;
+    text-align: center;
+}
+
+/* FORM BOX */
+.form-box {
+    background: white;
+    padding: 30px;
+    border-radius: 30px;
+    margin-bottom: 25px;
+}
+
+h2, h3 {
+    color: #2d3748;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* INPUTS */
+input, button {
+    width: 100%;
+    padding: 15px;
+    margin: 8px 0;
+    border-radius: 25px;
+    border: 1px solid #121111;
+}
+
+button {
+    background: #5a67d8;
+    color: white;
+    cursor: pointer;
+}
+
+/* NAVBAR */
+.navbar {
+    background: white;
+    padding: 15px 25px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.logo h3 {
+    color: #5a67d8;
+}
+
+.logo-img-nav {
+    height: 30px;
+    margin-right: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-btn {
+    padding: 8px 15px;
+    background: #edf2f7;
+    color: #4a5568;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+/* LOGOUT */
+.logout-btn {
+    background: #e53e3e;
+    color: white;
+}
+
+/* GRID */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* STAT BOX */
+.stat-box {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.stat-box h3 {
+    font-size: 40px;
+    color: #5a67d8;
+}
+
+.stat-box p {
+    color: #718096;
+}
+
+/* QUICK ACTIONS */
+.quick-actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* FORM ROW */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+/* FILTER */
+.filter-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-group input {
+    flex: 1;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background: #5a67d8;
+    color: white;
+}
+
+/* STATUS */
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.status-present {
+    background: #c6f6d5;
+    color: #22543d;
+}
+
+.status-absent {
+    background: #fed7d7;
+    color: #742a2a;
+}
+
+.status-late {
+    background: #feebc8;
+    color: #744210;
+}
+
+/* RADIO */
+.radio-group {
+    display: flex;
+    gap: 15px;
+}
+
+/* UTIL */
+.hidden {
+    display: none;
+}
+
+.info-text {
+    text-align: center;
+    margin-top: 15px;
+    color: #718096;
+}
+
+/* FOOTER */
+.footer {
+    background: #2d3748;
+    color: white;
+    margin-top: 40px;
+    border-radius: 15px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 40px;
+}
+
+.footer-section h4 {
+    color: #a0aec0;
+}
+
+.footer-section p {
+    color: #cbd5e0;
+}
+
+.footer-section a {
+    color: #cbd5e0;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    background: #1a202c;
+    text-align: center;
+    padding: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-actions {
+        flex-direction: column;
+    }
+
+    .filter-group {
+        flex-direction: column;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+}
+.logo img {
+    width: 150px;
+    height: 150px;
+border-radius: 34px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+@media (max-width: 600px) {
+    .logo img {
+        width: 80px;
+        height: 80px;
+    }
+}

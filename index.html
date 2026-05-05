@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Attendance System</title>
+    
+    <!-- LINK 1: CSS FILE -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- LINK 2: BOOTSTRAP ICONS (External) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    
+     <!-- HEADER SECTION -->
+ <div class="header">
+            <div class="logo">
+            <img src="ly.svg" alt="Logo" class="logo-img">  
+          <h1>ATTENDANCE IN CLASS MANAGEMENT SYSTEM</h1>
+          <p>Complete School Attendance Management System</p></div>
+      </div>
+
+    <!-- LOGIN SECTION -->
+
+    <div id="loginScreen">
+        <div class="form-box">
+            <h2>Login  as Admin</h2>
+            <form id="loginForm">
+            <label for="loginUser">Username:</label>
+                <input type="text" id="loginUser" placeholder="Username" required><br><br>
+                <label for="loginPass">Password:</label>
+                 <input type="password" id="loginPass" placeholder="Password" required><br><br>
+                 
+                <button type="submit">Login</button>
+            </form>
+            <p class="info-text">Username: admin | Password: admin123</p>
+        </div>
+    </div>
+
+    <!-- MAIN SYSTEM SECTION (Hidden until login) -->
+    <div id="mainSystem" class="hidden">
+        
+        <!-- NAVIGATION BAR -->
+        <div class="navbar">
+            <div class="logo">
+                <h3>Class Attendance System</h3>
+            </div>
+            <div class="nav-links">
+                <span>Welcome, <span id="loggedUser"></span></span>
+                <button class="nav-btn" onclick="showPanel('dashboard')">Home</button>
+                <button class="nav-btn" onclick="showPanel('students')">Students</button>
+                <button class="nav-btn" onclick="showPanel('attendance')">Attendance</button>
+                <button class="nav-btn" onclick="showPanel('reports')">Reports</button>
+                <button class="nav-btn" onclick="showPanel('about')">About Us</button>
+                <button class="nav-btn logout-btn" onclick="doLogout()">Logout</button>
+            </div>
+        </div>
+
+        <!-- DASHBOARD PANEL -->
+        <div id="dashboardPanel">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3 id="totalStudents">0</h3>
+                    <p>Total Students</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="presentToday">0</h3>
+                    <p>Present Today</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="absentToday">0</h3>
+                    <p>Absent Today</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="lateToday">0</h3>
+                    <p>Late Today</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="attendanceRate">0%</h3>
+                    <p>Overall Rate</p>
+                </div>
+            </div>
+            <div class="quick-actions">
+                <button class="primary-btn" onclick="showPanel('students')">Add New Student</button>
+                <button class="primary-btn" onclick="showPanel('attendance')">Mark Today's Attendance</button>
+                <button class="primary-btn" onclick="showPanel('reports')">Generate Report</button>
+            </div>
+        </div>
+
+        <!-- STUDENTS PANEL -->
+        <div id="studentsPanel" class="hidden">
+            <div class="form-box">
+                <h3>Add New Student</h3>
+                <form id="addStudentForm">
+                    <div class="form-row">
+                        <input type="text" id="studentFullName" placeholder="Full Name" required>
+                        <input type="text" id="studentClass" placeholder="Class (1st, 2nd, 3rd...)" required>
+                        <input type="text" id="studentRoll" placeholder="Roll Number" required>
+                        <input type="text" id="studentSection" placeholder="Section (A, B, C)" required>
+                    </div>
+                    <button type="submit" class="primary-btn">Add Student</button>
+                </form>
+            </div>
+            <div class="form-box">
+                <h3>Student List</h3>
+                <div class="search-box">
+                    <input type="text" id="searchStudent" placeholder="Search by name or roll number" onkeyup="searchStudents()">
+                </div>
+                <div id="studentsTable"></div>
+            </div>
+        </div>
+
+        <!-- ATTENDANCE PANEL -->
+        <div id="attendancePanel" class="hidden">
+            <div class="form-box">
+                <h3>Mark Student Attendance</h3>
+                <div class="form-row">
+                    <label>Select Date:</label>
+                    <input type="date" id="attendanceDate">
+                </div>
+                <div id="attendanceForm"></div>
+                <button onclick="saveAttendanceMarking()" class="primary-btn">Save Attendance</button>
+            </div>
+        </div>
+
+        <!-- REPORTS PANEL -->
+        <div id="reportsPanel" class="hidden">
+            <div class="form-box">
+                <h3>Attendance Reports</h3>
+                <div class="filter-group">
+                    <label>Filter by Date:</label>
+                    <input type="date" id="reportDate">
+                    <button onclick="filterByDate()" class="primary-btn">Filter</button>
+                    <button onclick="showAllReports()" class="secondary-btn">Show All</button>
+
+                </div>
+                <div class="filter-group">
+                    <label>Filter by Student:</label>
+                    <input type="text" id="searchReport" placeholder="Search student name" onkeyup="searchInReports()">
+                </div>
+                <div id="reportsTable"></div>
+            </div>
+        </div>
+
+        <!-- ABOUT US PANEL -->
+        <div id="aboutPanel" class="hidden">
+            <div class="form-box">
+                <h3>About Us</h3>
+                <div class="about-content">
+                    <p>Welcome to the Class Attendance Management System. This system is designed to help schools and educators efficiently track student attendance.</p>
+                    <p>Our system provides:</p>
+                    <ul>
+                        <li>Easy student management</li>
+                        <li>Quick attendance marking</li>
+                        <li>Comprehensive reporting</li>
+                        <li>User-friendly interface</li>
+                    </ul>
+                    <p>Developed by a dedicated team of student developers committed to making education administration simpler and more efficient.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER SECTION -->
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Class Attendance System</h4>
+                    <p> Attendance Solution</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <p><a onclick="showPanel('dashboard')">Dashboard</a></p>
+                    <p><a onclick="showPanel('students')">Students</a></p>
+                    <p><a onclick="showPanel('attendance')">Attendance</a></p>
+                    <p><a onclick="showPanel('reports')">Reports</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Information</h4>
+                    <p><a href="mailto:dannymunezero68@gmail.com">click here to send an email</a></p>
+                    <p><a href="tel:+250794035663">Phone: +250 794035663</a></p>
+                    <p>Address: Kigali, Rwanda</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Working Hours</h4>
+                    <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                    <p>Saturday: 9:00 AM - 1:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Class Attendance System. All Rights Reserved.</p>
+                <p>Developed by group of student developers at Class Attendance System</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- LINK 3: JAVASCRIPT FILE -->
+    <script src="storage.js"></script>
+    <script src="navigation.js"></script>
+    <script src="students.js"></script>
+    <script src="attendance.js"></script>
+    <script src="reports.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
