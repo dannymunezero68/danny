@@ -24,9 +24,9 @@ function loadAttendanceMarkingForm() {
             <td>${student.roll}</td>
             <td>${student.name}</td>
             <td>
-                <label><input type="radio" name="status_${student.id}" value="Present" ${status==="Present"?"checked":""}>P</label>
-                <label><input type="radio" name="status_${student.id}" value="Absent" ${status==="Absent"?"checked":""}>A</label>
-                <label><input type="radio" name="status_${student.id}" value="Late" ${status==="Late"?"checked":""}>L</label>
+                <label><input type="radio" name="status_${student.id}" value="Present" ${status==="Present"?"checked":""}>Present</label>
+                <label><input type="radio" name="status_${student.id}" value="Absent" ${status==="Absent"?"checked":""}>Absent</label>
+                <label><input type="radio" name="status_${student.id}" value="Late" ${status==="Late"?"checked":""}>Late</label>
             </td>
         </tr>`;
     });
