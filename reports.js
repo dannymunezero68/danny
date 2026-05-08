@@ -1,4 +1,7 @@
-//handles attendance reports display and filtering    
+
+// reports management
+
+
 function displayAllReports() {
     let container = document.getElementById('reportsTable');
     if (!container) return;
