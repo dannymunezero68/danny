@@ -1,5 +1,5 @@
 
-// STUDENT MANAGEMENT
+// student management functions
 
  function handleStudentSubmit(e) {
      e.preventDefault();
@@ -54,7 +54,6 @@ function displayStudentsList() {
             if(attendanceRecord.status === 'Absent') bgColor = '#fed7d7';
             if(attendanceRecord.status === 'Late') bgColor = '#feebc8';
         }
-         
         html += `<tr style="background-color: ${bgColor}">
              <td>${oneRecord.roll}</td>
              <td>${oneRecord.name}</td>

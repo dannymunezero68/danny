@@ -1,6 +1,6 @@
-// ===============================
-// STORAGE LAYER (LocalStorage)
-// ===============================
+
+//LocalStorage
+
 
 let allStudents = [];
 let allAttendance = [];
@@ -8,7 +8,6 @@ let systemUsers = [
     { username: 'admin', password: 'admin123' }
 ];
 let currentUser = null;
-
  // Load saved data from browser storage
  function loadData() {
      let savedStudents = localStorage.getItem('class_students');
@@ -17,7 +16,7 @@ let currentUser = null;
      let migrated = false;
      if (savedStudents) {
          allStudents = JSON.parse(savedStudents);
-         // Migrate old 'class' property to 'studentClass' and remove 'class'
+         // Migrate old 'class' property 
          allStudents = allStudents.map(s => {
              if (s.hasOwnProperty('class') && !s.hasOwnProperty('studentClass')) {
                  const { class: oldClass, ...rest } = s;

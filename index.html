@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Class Attendance System</title>
     
-    <!-- LINK 1: CSS FILE -->
+    <!--link1: css file -->
     <link rel="stylesheet" href="script1.css">
     
-    <!-- LINK 2: BOOTSTRAP ICONS (External) -->
+    <!--link2: bootstrap (External) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
 <div class="container" id="mainHeader">
     
-     <!-- HEADER SECTION -->
+     <!--header-->
  <div class="header">
             <div class="logo">
             <img src="Ly.svg" alt="Logo" class="logo-img">  
@@ -23,7 +23,7 @@
           <p>Complete School Attendance Management System</p></div>
       </div>
 
-    <!-- LOGIN SECTION -->
+    <!--loginsystem-->
 
     <div id="loginScreen">
         <div class="form-box">
@@ -40,10 +40,10 @@
         </div>
     </div>
 
-    <!-- MAIN SYSTEM SECTION (Hidden until login) -->
+    <!--mainsystem-->
     <div id="mainSystem" class="hidden">
         
-        <!-- NAVIGATION BAR -->
+        <!--navigationbar-->
         <div class="navbar">
             <div class="logo">
                 <h3>Class Attendance System</h3>
@@ -52,13 +52,15 @@
                 
                 <span>Welcome, <span id="loggedUser"></span></span>
                  <button class="nav-btn" onclick="showPanel('home')">Home</button>
+                 <button class="nav-btn" onclick="showPanel('students')">Students</button>
+                 <button class="nav-btn" onclick="showPanel('attendance')">Attendance</button>
                  <button class="nav-btn" onclick="showPanel('dashboard')">Dashboard</button>
                  <button class="nav-btn" onclick="showPanel('reports')">Reports</button>
                  <button class="nav-btn" onclick="showPanel('about')">About Us</button>
                  <button class="nav-btn logout-btn" onclick="doLogout()">Logout</button>
             </div>
         </div>
-<!-- ================= HOME PANEL ================= -->
+<!--home pannel-->
     <div id="homePanel">
 
         <div class="welcome-box">
@@ -85,7 +87,7 @@
 
         </div>
 
-        <!-- DASHBOARD PANEL -->
+        <!--dashboardpanel-->
         <div id="dashboardPanel">
             <div class="stats-grid">
                 <div class="stat-box">
@@ -116,7 +118,7 @@
             </div>
         </div>
 
-        <!-- STUDENTS PANEL -->
+        <!-- students panel -->
         <div id="studentsPanel" class="hidden">
             <div class="form-box">
                 <h3>Add New Student</h3>
@@ -161,7 +163,7 @@
             </div>
         </div>
 
-        <!-- ATTENDANCE PANEL -->
+        <!-- attendance panel -->
         <div id="attendancePanel" class="hidden">
             <div class="form-box">
                 <h3>Mark Student Attendance</h3>
@@ -174,7 +176,7 @@
             </div>
         </div>
 
-        <!-- REPORTS PANEL -->
+        <!-- reports panel -->
         <div id="reportsPanel" class="hidden">
             <div class="form-box">
                 <h3>Attendance Reports</h3>
@@ -193,7 +195,7 @@
             </div>
         </div>
 
-        <!-- ABOUT US PANEL -->
+        <!-- about panel -->
         <div id="aboutPanel" class="hidden">
             <div class="form-box">
                 <h3>About Us</h3>
@@ -211,7 +213,7 @@
             </div>
         </div>
 
-        <!-- FOOTER SECTION -->
+        <!-- footer -->
         <div class="footer">
             <div class="footer-content">
                 <div class="footer-section">
@@ -244,7 +246,7 @@
                  </div>
              </div>
 
-<!-- LINK 3: JAVASCRIPT FILE -->
+<!-- scripts -->
     <script src="storage.js"></script>
     <script src="navigation.js"></script>
     <script src="students.js"></script>

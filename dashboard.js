@@ -1,3 +1,5 @@
+// dashboard update function
+
 function updateDashboard(){
 
     let today = new Date().toISOString().split("T")[0];
@@ -20,7 +22,7 @@ function updateDashboard(){
 
     let totalStudents = allStudents.length;
 
-    // UPDATE NUMBERS
+    // update dashbord
 
     document.getElementById("presentToday").innerText = present;
 
@@ -30,7 +32,7 @@ function updateDashboard(){
 
     document.getElementById("totalStudents").innerText = totalStudents;
 
-    // ATTENDANCE RATE
+    // attendence rate
 
     let rate = totalStudents > 0
         ? Math.round((present / totalStudents) * 100)
@@ -38,7 +40,7 @@ function updateDashboard(){
 
     document.getElementById("attendanceRate").innerText = rate + "%";
 
-    // ANIMATION
+    // animation
 
     document.getElementById("progressFill").style.width = rate + "%";
 }

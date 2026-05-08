@@ -1,4 +1,4 @@
-// APP INITIALIZATION
+// app initialization
 function handleLogin(e) {
     e.preventDefault();
     let user = document.getElementById('loginUser').value;
@@ -34,7 +34,7 @@ function init() {
 }
 init();
 
-// LOGOUT
+// logout function
 function doLogout() {
     document.getElementById("mainSystem").classList.add("hidden");
     document.getElementById("loginScreen").classList.remove("hidden");

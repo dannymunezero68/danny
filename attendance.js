@@ -1,5 +1,5 @@
 
-// ATTENDANCE MARKING
+// attendance
 function loadAttendanceMarkingForm() {
     let container = document.getElementById('attendanceForm');
     if (!container || allStudents.length === 0) return;
@@ -30,19 +30,13 @@ function loadAttendanceMarkingForm() {
             </td>
         </tr>`;
     });
-
     html += "</tbody></table>";
     container.innerHTML = html;
 }
-
-function saveAttendanceMarking() {
     let date = document.getElementById('attendanceDate').value;
-
     allAttendance = allAttendance.filter(a => a.date !== date);
-
     allStudents.forEach(student => {
         let selected = document.querySelector(`input[name="status_${student.id}"]:checked`);
-
         if (selected) {
             allAttendance.push({
                 studentId: student.id,
@@ -55,8 +49,39 @@ function saveAttendanceMarking() {
             });
         }
     });
+function saveAttendanceMarking()
+ {
+    let attendanceDate = document.getElementById("attendanceDate").value;
+    // see selected day is real to today
+    if (attendanceDate === "") {
+        alert("Please select date");
+        return;
+    }
 
-    saveData();
-    updateDashboard();
-    alert("Attendance saved");
-}
+
+    
+    //  today date
+    let today = new Date().toISOString().split("T")[0];
+
+    //see real date vs selected date
+    if (attendanceDate !== today) {
+
+        // Past date
+        if (attendanceDate < today) {
+            alert("Attendance date has already passed!");
+        }
+
+        // Future date
+        else if (attendanceDate > today) {
+            alert("Future attendance date is not allowed!");
+        }
+
+        return;
+    }
+
+    // save attendance data
+    alert("Attendance saved successfully");
+
+    // close attendance form
+    loadAttendanceMarkingForm();
+}                                           
