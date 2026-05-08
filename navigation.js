@@ -1,9 +1,7 @@
-// ===============================
-// UI CONTROLLER (Panels Navigation)
-// ===============================
+    // UI CONTROLLER (Panels Navigation)
 
 function showPanel(panelName) {
-    let panels = ['dashboardPanel', 'studentsPanel', 'attendancePanel', 'reportsPanel', 'aboutPanel'];
+    let panels = ['homePanel', 'dashboardPanel', 'studentsPanel', 'attendancePanel', 'reportsPanel', 'aboutPanel'];
 
     panels.forEach(id => {
         let el = document.getElementById(id);
@@ -19,22 +17,21 @@ function showPanel(panelName) {
     if (panelName === 'reports') displayAllReports();
 }
 
-function loadPage(pageName) {
-    let panels = ['dashboardPanel', 'studentsPanel', 'attendancePanel', 'reportsPanel'];
-
-    panels.forEach(id => {
-        let el = document.getElementById(id);
-        if (el) el.classList.add('hidden');
-    });
-
-    let selected = document.getElementById(pageName + 'Panel');
-    if (selected) selected.classList.remove('hidden');
-
-    if (pageName === 'dashboard') updateDashboard();
-    if (pageName === 'students') displayStudentsList();
-    if (pageName === 'attendance') loadAttendanceMarkingForm();
-    if (pageName === 'reports') displayAllReports();
-}
+ function loadPage(pageName) {
+     // Map page names to their HTML files for standalone page navigation
+     const pageMap = {
+         'dashboard': 'dashboard.html',
+         'students': 'students.html',
+         'attendance': 'attendance.html',
+         'reports': 'reports.html'
+     };
+     const target = pageMap[pageName];
+     if (target) {
+         window.location.href = target;
+     } else {
+         console.warn('Unknown page:', pageName);
+     }
+ }
 
 function initStandalone() {
     loadData();
@@ -46,5 +43,4 @@ function initStandalone() {
     if (document.getElementById('dashboardPanel')) updateDashboard();
     if (document.getElementById('attendancePanel')) loadAttendanceMarkingForm();
     if (document.getElementById('reportsPanel')) displayAllReports();
-}
-
+    }

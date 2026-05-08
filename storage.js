@@ -9,14 +9,31 @@ let systemUsers = [
 ];
 let currentUser = null;
 
-// Load saved data from browser storage
-function loadData() {
-    let savedStudents = localStorage.getItem('class_students');
-    let savedAttendance = localStorage.getItem('class_attendance');
+ // Load saved data from browser storage
+ function loadData() {
+     let savedStudents = localStorage.getItem('class_students');
+     let savedAttendance = localStorage.getItem('class_attendance');
 
-    if (savedStudents) allStudents = JSON.parse(savedStudents);
-    if (savedAttendance) allAttendance = JSON.parse(savedAttendance);
-}
+     let migrated = false;
+     if (savedStudents) {
+         allStudents = JSON.parse(savedStudents);
+         // Migrate old 'class' property to 'studentClass' and remove 'class'
+         allStudents = allStudents.map(s => {
+             if (s.hasOwnProperty('class') && !s.hasOwnProperty('studentClass')) {
+                 const { class: oldClass, ...rest } = s;
+                 migrated = true;
+                 return { ...rest, studentClass: oldClass };
+             }
+             return s;
+         });
+     }
+     if (savedAttendance) allAttendance = JSON.parse(savedAttendance);
+
+     // If migration occurred, save cleaned data to storage
+     if (migrated) {
+         saveData();
+     }
+ }
 
 // Save data to browser storage
 function saveData() {

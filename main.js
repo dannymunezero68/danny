@@ -39,3 +39,4 @@ function doLogout() {
     document.getElementById("mainSystem").classList.add("hidden");
     document.getElementById("loginScreen").classList.remove("hidden");
 }
+document.getElementById("mainHeader").style.display = "block";

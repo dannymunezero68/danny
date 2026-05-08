@@ -1,19 +1,44 @@
-// DASHBOARD STATS
-function updateDashboard() {
-    document.getElementById('totalStudents').innerText = allStudents.length;
+function updateDashboard(){
 
-    let today = new Date().toISOString().split('T')[0];
-    let todayData = allAttendance.filter(a => a.date === today);
+    let today = new Date().toISOString().split("T")[0];
 
-    let present = todayData.filter(a => a.status === "Present").length;
-    let absent = todayData.filter(a => a.status === "Absent").length;
-    let late = todayData.filter(a => a.status === "Late").length;
+    let todayAttendance = allAttendance.filter(
+        item => item.date === today
+    );
 
-    document.getElementById('presentToday').innerText = present;
-    document.getElementById('absentToday').innerText = absent;
-    document.getElementById('lateToday').innerText = late
-    // Calculate overall attendance rate
-    let totalMarked = present + absent + late;
-    let rate = totalMarked > 0 ? Math.round((present / totalMarked) * 100) : 0;
-    document.getElementById('attendanceRate').innerText = rate + '%';
+    let present = todayAttendance.filter(
+        item => item.status === "Present"
+    ).length;
+
+    let absent = todayAttendance.filter(
+        item => item.status === "Absent"
+    ).length;
+
+    let late = todayAttendance.filter(
+        item => item.status === "Late"
+    ).length;
+
+    let totalStudents = allStudents.length;
+
+    // UPDATE NUMBERS
+
+    document.getElementById("presentToday").innerText = present;
+
+    document.getElementById("absentToday").innerText = absent;
+
+    document.getElementById("lateToday").innerText = late;
+
+    document.getElementById("totalStudents").innerText = totalStudents;
+
+    // ATTENDANCE RATE
+
+    let rate = totalStudents > 0
+        ? Math.round((present / totalStudents) * 100)
+        : 0;
+
+    document.getElementById("attendanceRate").innerText = rate + "%";
+
+    // ANIMATION
+
+    document.getElementById("progressFill").style.width = rate + "%";
 }

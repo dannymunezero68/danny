@@ -48,7 +48,7 @@ function saveAttendanceMarking() {
                 studentId: student.id,
                 studentName: student.name,
                 studentRoll: student.roll,
-                studentClass: student.class,
+                studentClass: student.studentClass,
                 studentSection: student.section,
                 date: date,
                 status: selected.value

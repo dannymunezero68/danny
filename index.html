@@ -6,19 +6,19 @@
     <title>Class Attendance System</title>
     
     <!-- LINK 1: CSS FILE -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script1.css">
     
     <!-- LINK 2: BOOTSTRAP ICONS (External) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-<div class="container">
+<div class="container" id="mainHeader">
     
      <!-- HEADER SECTION -->
  <div class="header">
             <div class="logo">
-            <img src="images/logo.svg" alt="Logo" class="logo-img">  
+            <img src="Ly.svg" alt="Logo" class="logo-img">  
           <h1>ATTENDANCE IN CLASS MANAGEMENT SYSTEM</h1>
           <p>Complete School Attendance Management System</p></div>
       </div>
@@ -49,14 +49,40 @@
                 <h3>Class Attendance System</h3>
             </div>
             <div class="nav-links">
+                
                 <span>Welcome, <span id="loggedUser"></span></span>
-                <button class="nav-btn" onclick="showPanel('dashboard')">Home</button>
-                <button class="nav-btn" onclick="showPanel('students')">Students</button>
-                <button class="nav-btn" onclick="showPanel('attendance')">Attendance</button>
-                <button class="nav-btn" onclick="showPanel('reports')">Reports</button>
-                <button class="nav-btn" onclick="showPanel('about')">About Us</button>
-                <button class="nav-btn logout-btn" onclick="doLogout()">Logout</button>
+                 <button class="nav-btn" onclick="showPanel('home')">Home</button>
+                 <button class="nav-btn" onclick="showPanel('dashboard')">Dashboard</button>
+                 <button class="nav-btn" onclick="showPanel('reports')">Reports</button>
+                 <button class="nav-btn" onclick="showPanel('about')">About Us</button>
+                 <button class="nav-btn logout-btn" onclick="doLogout()">Logout</button>
             </div>
+        </div>
+<!-- ================= HOME PANEL ================= -->
+    <div id="homePanel">
+
+        <div class="welcome-box">
+            <h2>Welcome, TO ATTENDENCE MANAGEMENT SYSTEM </h2>
+            <p>Manage your class attendance easily and efficiently.</p>
+        </div>
+        
+        <div class="home-cards">
+            <div class="card" onclick="showPanel('students')">
+                <h3>Students</h3>
+                <p>Manage all students</p>
+            </div>
+
+            <div class="card" onclick="showPanel('attendance')">
+                <h3>Attendance</h3>
+                <p>Mark daily attendance</p>
+            </div>
+
+            <div class="card" onclick="showPanel('reports')">
+                <h3>Reports</h3>
+                <p>View attendance reports</p>
+            </div>
+        </div>
+
         </div>
 
         <!-- DASHBOARD PANEL -->
@@ -97,9 +123,31 @@
                 <form id="addStudentForm">
                     <div class="form-row">
                         <input type="text" id="studentFullName" placeholder="Full Name" required>
-                        <input type="text" id="studentClass" placeholder="Class (1st, 2nd, 3rd...)" required>
+                        
+<select id="studentClass" required>
+    <option value="">Select Class</option>
+
+    <optgroup label="OL">
+        <option value="S1">S1</option>
+        <option value="S2">S2</option>
+        <option value="S3">S3</option>
+    </optgroup>
+
+    <optgroup label="ACC">
+        <option value="S4">S4</option>
+        <option value="S5">S5</option>
+        <option value="S6">S6</option>
+    </optgroup>
+
+    <optgroup label="SWD">
+        <option value="L3SWD">L3SWD</option>
+        <option value="L4SWD">L4SWD</option>
+    </optgroup>
+</select>
+                            
                         <input type="text" id="studentRoll" placeholder="Roll Number" required>
-                        <input type="text" id="studentSection" placeholder="Section (A, B, C)" required>
+
+                        <input type="text" id="studentSection" placeholder="Section" required>
                     </div>
                     <button type="submit" class="primary-btn">Add Student</button>
                 </form>
@@ -190,13 +238,11 @@
                     <p>Sunday: Closed</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Class Attendance System. All Rights Reserved.</p>
-                <p>Developed by group of student developers at KTSS Attendance System</p>
-            </div>
-        </div>
-    </div>
-</div>
+                 <div class="footer-bottom">
+                     <p>&copy; 2024 Class Attendance System. All Rights Reserved.</p>
+                     <p>Developed by group of student developers at KTSS Attendance System</p>
+                 </div>
+             </div>
 
 <!-- LINK 3: JAVASCRIPT FILE -->
     <script src="storage.js"></script>
