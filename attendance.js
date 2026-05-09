@@ -1,4 +1,3 @@
-
 // attendance
 function loadAttendanceMarkingForm() {
     let container = document.getElementById('attendanceForm');
@@ -33,6 +32,7 @@ function loadAttendanceMarkingForm() {
     html += "</tbody></table>";
     container.innerHTML = html;
 }
+
 function saveAttendanceMarking() {
     let attendanceDate = document.getElementById("attendanceDate").value;
     // see selected day is real to today
@@ -83,40 +83,3 @@ function saveAttendanceMarking() {
     // refresh form
     loadAttendanceMarkingForm();
 }
-    });
-function saveAttendanceMarking()
- {
-    let attendanceDate = document.getElementById("attendanceDate").value;
-    // see selected day is real to today
-    if (attendanceDate === "") {
-        alert("Please select date");
-        return;
-    }
-
-
-    
-    //  today date
-    let today = new Date().toISOString().split("T")[0];
-
-    //see real date vs selected date
-    if (attendanceDate !== today) {
-
-        // Past date
-        if (attendanceDate < today) {
-            alert("Attendance date has already passed!");
-        }
-
-        // Future date
-        else if (attendanceDate > today) {
-            alert("Future attendance date is not allowed!");
-        }
-
-        return;
-    }
-
-    // save attendance data
-    alert("Attendance saved successfully");
-
-    // close attendance form
-    loadAttendanceMarkingForm();
-}                                           
