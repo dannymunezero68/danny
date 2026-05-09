@@ -7,10 +7,16 @@ function handleLogin(e) {
     let valid = systemUsers.find(u => u.username === user && u.password === pass);
     if (valid) {
         currentUser = valid.username;
-        document.getElementById('loggedUser').innerText = currentUser;
-        document.getElementById('loginScreen').classList.add('hidden');
-        document.getElementById('mainSystem').classList.remove('hidden');
-        document.getElementById('loginForm').reset();
+        let loggedUserElement = document.getElementById('loggedUser');
+        if (loggedUserElement) {
+            loggedUserElement.innerText = currentUser;
+        }
+        let loginScreen = document.getElementById('loginScreen');
+        let mainSystem = document.getElementById('mainSystem');
+        if (loginScreen) loginScreen.classList.add('hidden');
+        if (mainSystem) mainSystem.classList.remove('hidden');
+        let loginForm = document.getElementById('loginForm');
+        if (loginForm) loginForm.reset();
         updateDashboard();
     } else {
         alert('Invalid credentials!');
@@ -18,25 +24,34 @@ function handleLogin(e) {
 }
 function init() {
     loadData();
-    document.getElementById('loginForm')
-        ?.addEventListener('submit', handleLogin);
+    let loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', handleLogin);
+    }
 
-    document.getElementById('addStudentForm')
-        ?.addEventListener('submit', handleStudentSubmit);
+    let addStudentForm = document.getElementById('addStudentForm');
+    if (addStudentForm) {
+        addStudentForm.addEventListener('submit', handleStudentSubmit);
+    }
 
     // Set default date to today
     let today = new Date().toISOString().split('T')[0];
     let attendanceDate = document.getElementById('attendanceDate');
     if (attendanceDate) attendanceDate.value = today;
 
-    document.getElementById('loginScreen').classList.remove('hidden');
-    document.getElementById('mainSystem').classList.add('hidden');
+    let loginScreen = document.getElementById('loginScreen');
+    let mainSystem = document.getElementById('mainSystem');
+    if (loginScreen) loginScreen.classList.remove('hidden');
+    if (mainSystem) mainSystem.classList.add('hidden');
 }
 init();
 
 // logout function
 function doLogout() {
-    document.getElementById("mainSystem").classList.add("hidden");
-    document.getElementById("loginScreen").classList.remove("hidden");
+    let mainSystem = document.getElementById("mainSystem");
+    let loginScreen = document.getElementById("loginScreen");
+    if (mainSystem) mainSystem.classList.add("hidden");
+    if (loginScreen) loginScreen.classList.remove("hidden");
 }
-document.getElementById("mainHeader").style.display = "block";
+let mainHeader = document.getElementById("mainHeader");
+if (mainHeader) mainHeader.style.display = "block";

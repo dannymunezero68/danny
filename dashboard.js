@@ -40,7 +40,9 @@ function updateDashboard(){
 
     document.getElementById("attendanceRate").innerText = rate + "%";
 
-    // animation
-
-    document.getElementById("progressFill").style.width = rate + "%";
+    // animation - safely handle missing element
+    let progressFill = document.getElementById("progressFill");
+    if (progressFill) {
+        progressFill.style.width = rate + "%";
+    }
 }
